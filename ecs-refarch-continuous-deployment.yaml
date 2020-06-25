@@ -44,7 +44,7 @@ Parameters:
 
   TemplateBucket:
     Type: String
-    Default: ecs-refarch-continuous-deployment
+    Default: ecs-continuous-deployment-audionow-test
     Description: >
       The S3 bucket from which to fetch the templates used by this stack.
 
@@ -118,9 +118,9 @@ Resources:
       TemplateURL: !Sub "https://s3.amazonaws.com/${TemplateBucket}/templates/vpc.yaml"
       Parameters:
         Name: !Ref AWS::StackName
-        VpcCIDR: !ImportValue VpcID
-        Subnet1CIDR: !ImportValue PublicSubnetA
-        Subnet2CIDR: !ImportValue PublicSubnetA
+        VpcCIDR: 10.215.0.0/16
+        Subnet1CIDR: 10.215.10.0/24
+        Subnet2CIDR: 10.215.20.0/24
 
   Service:
     Type: AWS::CloudFormation::Stack
